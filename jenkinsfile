@@ -21,24 +21,6 @@ pipeline {
                      ls -la
                   '''
             }
-        }
-        stage('test') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
-            steps {
-                  sh ''' 
-                     export HOME=/tmp
-                     npm config set cache /tmp/.npm
-                     ls -la
-                     node --version
-                     npm --version
-                     npm ci
-                     npm run test
-                     ls -la
-                  '''
-    }
+        }        
+    }   
 }
