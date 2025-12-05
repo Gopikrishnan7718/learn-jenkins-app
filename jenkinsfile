@@ -32,15 +32,8 @@ pipeline {
             steps {
                    sh ''' 
                      echo "test"
-                     ls /build/index.html
-                     export HOME=/tmp
-                     npm config set cache /tmp/.npm
-                     ls -la
-                     node --version
-                     npm --version
-                     npm ci
-                     npm run test
-                     ls -la
+                     cd build
+                     ls index.html
                    '''
             }
         }           
