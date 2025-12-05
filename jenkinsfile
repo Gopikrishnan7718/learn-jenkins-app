@@ -31,6 +31,8 @@ pipeline {
             }
             steps {
                    sh ''' 
+                     echo "test"
+                     ls /build/index.html
                      export HOME=/tmp
                      npm config set cache /tmp/.npm
                      ls -la
@@ -42,5 +44,5 @@ pipeline {
                    '''
             }
         }           
-    }
+    }   
 }
