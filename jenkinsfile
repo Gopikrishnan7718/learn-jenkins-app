@@ -32,8 +32,7 @@ pipeline {
             steps {
                    sh ''' 
                      echo "test"
-                     cd build
-                     ls index.html
+                     test -f /build/index.html
                      npm test
                    '''
             }
