@@ -22,39 +22,48 @@ pipeline {
                      ls -la
                   '''
             }
-        }     
-        stage('test') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
-            steps {
-                   sh ''' 
-                     echo "test"
-                     test -f build/index.html
-                     npm test
-                   '''
-            }
         }
-
-        stage('E2E') {
-            agent {
-                docker {
-                    image 'mcr.microsoft.com/playwright:v1.57.0-noble'
-                    reuseNode true
+        
+        stage('tests') {
+            parallel {
+                stage('unit test') {
+                    agent {
+                        docker {
+                            image 'node:18-alpine'
+                            reuseNode true
+                        }
+                    }
+                    steps {
+                        sh ''' 
+                            echo "test"
+                            test -f build/index.html
+                            npm test
+                        '''
+                    }
                 }
+
+
+                stage('E2E') {
+                    agent {
+                        docker {
+                            image 'mcr.microsoft.com/playwright:v1.57.0-noble'
+                            reuseNode true
+                            }
+                    }
+                    steps {
+                        sh ''' 
+                           npx serve -s build &
+                           sleep 10
+                           npx playwright test --reporter=html
+                        '''
+                        }
+                            
+                } 
+                
             }
-            steps {
-                   sh ''' 
-                     npx serve -s build &
-                     sleep 10
-                     npx playwright test --reporter=html
-                   '''
-            }
-                   
-        }  
+
+        }   
+ 
     }
     post {
         always {
