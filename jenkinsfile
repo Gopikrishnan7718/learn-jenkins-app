@@ -73,7 +73,7 @@ pipeline {
             steps {
                   sh ''' 
                      npm install netlify-cli
-                     /workspaces/learn-jenkins-app/node_modules/.bin/npxnetlify --version
+                     node_modules/.bin/netlify --version
                      
                   '''
             }
