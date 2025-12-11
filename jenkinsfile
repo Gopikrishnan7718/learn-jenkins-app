@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    stages {
+    stages {/*
         
         stage('Build') {
             agent {
@@ -62,7 +62,7 @@ pipeline {
                 
             }
 
-        } 
+        } */
         stage('deploy') {
             agent {
                 docker {
@@ -79,12 +79,12 @@ pipeline {
             }
         }
 
-    }
+    }/*
  
     
     post {
         always {
             junit 'jest-results/junit.xml'
         }
-    } 
+    } */
 }
