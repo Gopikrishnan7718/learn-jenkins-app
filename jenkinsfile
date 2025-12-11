@@ -12,6 +12,8 @@ pipeline {
             }
             steps {
                   sh ''' 
+                    export HOME=/tmp
+                    npm config set cache /tmp/.npm
                      node --version
                      npm --version
                      npm ci
@@ -59,7 +61,7 @@ pipeline {
                 
             }
 
-        } 
+        } /*
         stage('deploy') {
             agent {
                 docker {
@@ -78,7 +80,7 @@ pipeline {
                      netlify --version
 
                   '''
-            }
+            }*/
         }
 
     }
