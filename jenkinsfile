@@ -15,9 +15,9 @@ pipeline {
                     
                      node --version
                      npm --version
-                     
+                     export HOME=/tmp
+                     npm config set cache /tmp/.npm
                      npm ci
-                     chown -R 123:125 "/var/empty/.npm"
                      npm run build
                      ls -la
                   '''
