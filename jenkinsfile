@@ -75,7 +75,7 @@ pipeline {
                   sh ''' 
                      export HOME=/tmp
                      npm install netlify-cli
-                     node_modules/.bin/npxnetlify --version
+                    ./node_modules/.bin/netlify --version
 
                   '''
             }
