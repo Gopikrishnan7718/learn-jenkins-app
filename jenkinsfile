@@ -77,7 +77,7 @@ pipeline {
                      npm config set cache /tmp/.npm
                      cd /tmp
                      npm install netlify-cli
-                     node_modules/.bin/netlify --version
+                     netlify --version
 
                   '''
             }
