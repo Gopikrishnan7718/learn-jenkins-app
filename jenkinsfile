@@ -73,7 +73,7 @@ pipeline {
             }
             steps {
                   sh ''' 
-                     export HOME=$(pwd)
+                     export HOME=/tmp
                      npm install netlify-cli
                      node_modules/.bin/npxnetlify --version
 
