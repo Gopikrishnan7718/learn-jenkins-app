@@ -78,7 +78,7 @@ pipeline {
                      cd /tmp
                      npm install netlify-cli
                      export PATH=/tmp/node_modules/.bin:$PATH
-                    netlify --version
+                     netlify --version
 
                   '''
             }
