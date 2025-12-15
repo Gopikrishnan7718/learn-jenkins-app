@@ -86,7 +86,7 @@ pipeline {
                      netlify --version
                      netlify status
                      echo " deploying to prod - Site ID = $NETLIFY_SITE_ID"
-                     netlify deploy --dir=build --prod
+                     netlify deploy --dir=/tmp/build --prod
 
                   '''
             }
