@@ -81,12 +81,12 @@ pipeline {
                      export HOME=/tmp
                      npm config set cache /tmp/.npm
                      
-                     npm install netlify-cli
+                     npm install netlify-cli@20.1.1
                      export PATH=$PWD/node_modules/.bin:$PATH
                      netlify --version
                      netlify status
                      echo " deploying to prod - Site ID = $NETLIFY_SITE_ID"
-                     netlify deploy --dir=build --prod --skip-build
+                     netlify deploy --dir=build --prod --build=false 
 
                   '''
             }
